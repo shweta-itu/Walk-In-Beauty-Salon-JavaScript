@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Walk-In Beauty Salon</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript">
+	function moveBox(){
+		var cordx = 0;
+		var cordy = 0;
+		
+		// coordinate of mouse  pointer when the mouse is clicked on an element
+		// Link: http://www.w3schools.com/jsref/event_pagex.asp
+		// pagex is from the actual top and left position of web browser below url
+		// clientx is from the visible top and left position of web browser below url (if the page is scrolled)
+		if(event.pageX || event.pageY){  // if any of these values changes
+			newcordx = event.pageX;
+			newcordy = event.pageY;
+			
+		}else if(event.clientX || event.clientY){  // if any of these values changes
+			newcordx = event.clientX;
+			newcordy = event.clientY;
+		}
+		
+		cordx = event.pageX - event.clientX;
+		cordy = event.pageY - event.clientY;
+		
+		document.getElementById("smallBox").style.left = cordx + "px";
+		document.getElementById("smallBox").style.top = cordy + "px";
+	}
+	</script>
+</head>
+	
+<body onclick="moveBox()">
+<header>
+<img src="images/logo.png"</img>
+<h1>Walk-In Beauty Salon</h1>
+</header>
+<hr>
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>	
+		<li><a href="productinformation.html">Product Information</a></li>	
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<section class="section1 box1">
+<h2>What's New?</h2>
+<div id="smallBox">
+	<h3 style='color:deeppink'>New Shampoo in our Salon!!!</h3>
+</div>
+<article>
+<p>
+We started offering <b>"spa"</b> services since  June 2016.<b>"Come & Join Us"</b>
+<br><br>
+Beauty is directly related to the health of your Skin.If you want to look beautiful, you will have to take care of your skin.So now we started taking care of your skin with applying many techniques.This will help you to keep your skin healthy and look beautiful.<br><br>
+New Services Offered are:</p>
+<ol>
+<li class="list1">Massage Body Wraps & Scrubs</li>
+<p>If you need a fresh start, our Purifying and Slimming Detox Wrap will enable your body to eliminate fats and toxins while you relax. You can also experience aromatherapy unlike any other with our Chocoholic Wrap - the organic chocolate truffle body mask rejuvenates your skin while providing a unique sensory experience.</p>	
+<br>
+<li class="list1">Skin Care</li>
+<p>Our skincare and facial treatments tone and brighten your skin while reducing sagging. Our LED Anti-Aging Light Therapy utilizes the newest technology to produce stunning results. The Micro-Dermabrasion skin treatment refreshes your skin by repairing damaged skin and reversing sun damage - try it on your face, hands, or body!</p>
+<li class="list1">Spa Membership</li>
+<p>Our spa service is offering you membership facility for better care of your skin. You can opt for an <b>Annual Spa Membership</b> for $2000 or go for a <b>Daily Spa Pass</b> only for $100.
+</ol>
+</article>
+</section>
+<hr>
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>	
+		<li><a href="productinformation.html">Product Information</a></li>		
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<footer><p>© 2016 Shweta Sahu</p></footer>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Walk-In Beauty Salon</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<script type="text/javascript">
+	function validate(myForm)
+	{
+		var fields = myForm.elements;
+		for (i = 0; i < fields.length; i++) {
+            if (fields[i].checkValidity() == false) {
+                if (fields[i].validity.valueMissing) {
+					if(fields[i].name == "first") alert("Please enter a valid First name"); 
+					else if(fields[i].name == "last") alert("Please enter a valid Last name"); 
+					else if(fields[i].name == "address") alert("Please enter address"); 
+					else if(fields[i].name == "city") alert("Please enter city"); 
+					else if(fields[i].name == "state") alert("Please enter two letters for State"); 
+					else if(fields[i].name == "zip") alert("Please enter zip code (5 or 9 digits"); 
+					else if(fields[i].name == "phone") alert("Please enter phone number");
+					else if(fields[i].name == "email") alert("Please enter email id");
+					else if(fields[i].name == "ccnum") alert("Please enter credit card number");
+					else if(fields[i].name == "cctype") alert("Please select credit card type");
+					else if(fields[i].name == "ccexpire") alert("Please enter credit card expiration date");
+					else if(fields[i].name == "comment") alert("Please enter some comments");
+					else {
+					        fields[i].focus();
+							fields[i].select();
+					}
+					return false;
+                }
+                if (fields[i].validity.patternMismatch) {
+                    alert("Enter a valid pattern");
+                    fields[i].focus();
+                    fields[i].select();
+					return false;
+                }
+                if (fields[i] == myForm.cctype) {
+                    if (fields[i].selectedIndex == 0) {
+                        alert("Select credit card type.");
+                        fields[i].focus();   
+						return false;
+					}
+                }
+				if (fields[i] == myForm.ccnum) {
+                    if (fields[i].length < 16) {
+                        alert("Credit card length is less than 16 digits");
+                        fields[i].focus();
+						return false;						
+					}
+                }
+                if (fields[i] == myForm.ccexpire) {
+                    var expiryDate = myForm.ccexpire.value;
+                    var inputDate = expiryDate.split("/");
+                    var today = new date();
+                    var expiredDate = new date();
+                    expiredDate.setMonth(inputDate[0]);
+                    expiredDate.setFullYear(inputDate[1]);
+
+                    if (expiredDate < today) {
+                        alert("The card has expired, please try another card");
+                        formChk[i].focus();
+                        formChk[i].select();
+						return false;
+                        
+                    }
+                }
+            }
+        }
+    }	
+	
+	function calcTotal() 
+	{
+	
+		var Q1 = document.forms[0].qtyQ1.value;
+		var Q2 = document.forms[0].qtyQ2.value;
+		
+		var Q3 = document.forms[0].qtyQ3.value;
+		var Q4 = document.forms[0].qtyQ4.value;
+		
+		var Q5 = document.forms[0].qtyQ5.value;
+		var Q6 = document.forms[0].qtyQ6.value;
+		
+		var Q1tot = document.forms[0].totQ1.value = Q1 * 14.24; 
+		var Q2tot = document.forms[0].totQ2.value = Q2 * 24.24; 
+		var Q3tot = document.forms[0].totQ3.value = Q3 * 16.25; 
+		var Q4tot = document.forms[0].totQ4.value = Q4 * 20.02; 
+		var Q5tot = document.forms[0].totQ5.value = Q5 * 14.95; 
+		var Q6tot = document.forms[0].totQ6.value = Q6 * 26.24;
+				
+		var geltot = document.forms[0].subtotalgel.value =  Q1tot + Q2tot;
+		var condtot = document.forms[0].subtotalcond.value = Q3tot + Q4tot;
+		var shamtot = document.forms[0].subtotalsham.value = Q5tot + Q6tot;
+
+		var btax = document.forms[0].totalbtax.value = geltot + condtot + shamtot;
+		var stax = document.forms[0].salestax.value = btax * 0.0825;
+		var atax = document.forms[0].totalatax.value = btax + stax;
+		
+		var totQty = Q1 + Q2 + Q3 + Q4 + Q5 + Q6;
+
+		var shipfee = 0;
+		if(totQty > 0 )
+		{
+			shipfee = document.forms[0].shipnh.value = 15;
+		}
+		
+		document.forms[0].grandtotal.value = atax + shipfee;
+	}
+	</script>
+	
+	
+	
+	
+</head>
+	
+<body>
+<header>
+	<img src="images/logo.png"</img>
+	<h1>Walk-In Beauty Salon</h1>
+</header>
+<hr>
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>	
+			<li><a href="productinformation.html">Product Information</a></li>		
+			<li><a href="productCatalog.html">Catalog of Products</a></li>		
+			<li><a href="aboutus.html">About Us</a></li>
+			<li><a href="whatsnew.html">What's New</a></li>
+			<li><a href="customerservice.html">Customer Support</a></li>
+			<li><a href="faqs.html">FAQs</a></li>
+			<li><a href="employment.html">Employment</a></li>
+			<li><a href="order.html">Order</a></li>
+		</ul>
+	</nav>
+<hr>
+<section class="section1 box1">
+<h2>Order Form</h2>
+<form name="order" action="http://voyager.deanza.edu/~hso/cgi-bin/form420.cgi" method="post" onsubmit="return validate(this)" novalidate>
+<fieldset>
+<legend>Enter personal details</legend>
+<p>Please enter the personal information below that is necessary to process your order. All form entries must be completed.<p>
+<table border=2>
+	<tr>
+	   <th align=right>First Name</td>
+	   <td><input type="text" name="first" size="35" maxlength="30" placeholder="John" required></td>
+	</tr>
+	<tr>
+	   <th align=right>Last Name</td>
+	   <td><input type="text" name="last" size="35" maxlength="30" placeholder="Smith" required></td>
+	</tr>
+	<tr>
+	   <th align=right>Street Address</td>
+	   <td><input type="text" name="address" size="35" maxlength="30" placeholder="123 Stevens creek Blvd" required></td>
+	</tr>
+	<tr>
+	   <th align=right>City</td>
+	   <td><input type="text" name="city" size="35" maxlength="30" placeholder="Cupertino" required></td>
+	</tr>
+	<tr>
+	   <th align=right>State</td>
+	   <td><input type="text" name="state" size="2" maxlength="2" placeholder="CA" required>
+	   </td>
+	</tr>
+	<tr>
+	   <th align=right>Zip</td>
+	   <td><input type="number" name="zip" size="9" maxlength="9" placeholder="95014" pattern="\d{5}|\d{9}" required >
+	   </td>
+	</tr>
+	<tr>
+	   <th align=right>Phone</td>
+	   <td><input type="tel" name="phone" size="14" maxlength="14" placeholder="(408) 123-4567" pattern="\(\d{3}\)\d{3}-\d{4}" required></td>
+	</tr>
+	<tr>
+	   <th align=right>Email</td>
+	   <td><input type="email" name="email" size="35" maxlength="40" placeholder="sjohn@fhda.edu" required></td>
+	</tr>
+	<tr>
+	   <th align=right>Credit Card No</td>
+	   <td><input type="number" size="16" name="ccnum" size="16" maxlength="16"
+	   placeholder="1234567890123456" pattern="\d{16}" required></td>
+	</tr>
+	<tr>
+	   <th align=right>CC type</td>
+	   <td><select name="cctype">
+		<option seelcted="true">Visa
+		<option>MasterCard
+		<option>American Express
+		<option>Discover
+		</select>
+		</td>
+	</tr>
+	<tr>
+	   <th align=right>CC Expiration</td>
+	   <td><input type="month" name="ccexpire" size="7" maxlength="7"
+	   placeholder="June,2009" required></td>
+	</tr>
+	<tr>
+	   <th align=right>Comments</td>
+	   <td><textarea name="comment" cols="35" row="20" wrap="physical" required>
+	   testing</textarea></td>
+	</tr>
+	</table>
+	<input type="email" name="myemail" value="sahushwet349@students.itu.edu" hidden required></td>
+</fieldset>
+<br><br>
+<fieldset>
+<legend>Product Details</legend>
+<p> Please enter the number for quantity for required category</p>
+<table border=2>
+	<tr style="background-color:lightblue; color:deeppink">
+	   <th>Category<th>Description<th>Unit Price<th>
+	   Quantity<th>Total Price
+	</tr>
+	<tr>
+	   <td rowspan=2>Hair Gel</td>
+	   <td align=left>Styling Hair Gel for Men 9.6 ounces</td>
+	   <td align=left>$14.24</td>
+	   <td align=right><input type=number value =0 oninput="calcTotal()" name="qtyQ1"></td>
+	   <td align=right><input type=number name ="totQ1"</td>
+	</tr>
+	<tr>
+	   <td align=left>Styling Hair Gel for Men 19.2 ounces</td>
+	   <td align=left>$24.24</td>
+	   <td align=right><input type=number oninput="calcTotal()"  name="qtyQ2"></td>
+	   <td align=right><input type=number name = "totQ2"</td>
+    </tr>
+	<tr>
+	   <td colspan=4 align=right>Subtotal $</td>
+	   <td align=right><input type=number name ="subtotalgel"</td>	   
+	</tr>
+	<tr>
+	   <td rowspan=2>Hair Condioner</td>
+	   <td align=left> Men's Hair Conditioner 8 ounces</td>
+	   <td align=left>$16.25</td>
+	   <td align=right><input type=number oninput="calcTotal()" name="qtyQ3"></td>
+	   <td align=right><input type=number name="totQ3"></td>
+	</tr>
+	<tr>
+	   <td align=left> Men's Hair Conditioner 15 ounces</td>
+	   <td align=left>$20.02</td>
+	   <td align=right><input type=number oninput="calcTotal()" name="qtyQ4"></td>
+	   <td align=right><input type=number name="totQ4"></td>
+	</tr>
+	<tr>
+	   <td colspan=4 align=right>Subtotal $</td>
+	   <td align=right><input type=number name = "subtotalcond"</td>	   
+	</tr>
+	<tr>
+	   <td rowspan=2>Hair Shampoo</td>
+	   <td align=left>  Daily Organic Oil Shampoo 16 ounces</td>
+	   <td align=left>$14.95</td>
+   	   <td align=right><input type=number oninput="calcTotal()" name="qtyQ5"></td>
+	   <td align=right><input type=number name="totQ5"></td>
+	</tr>
+	<tr>
+	   <td align=left> Daily Organic Oil Shampoo 32 ounces</td>
+	   <td align=left>$26.24</td>	   
+   	   <td align=right><input type=number oninput="calcTotal()" name="qtyQ6"></td>
+	   <td align=right><input type=number name="totQ6"></td>
+	</tr>
+	<tr>
+	   <td colspan=4 align=right>Subtotal $</td>
+	   <td align=right><input type=number name = "subtotalsham"</td> 
+	</tr>
+	<tr>
+	   <td colspan=4 align=right>Total $</td>
+	   <td align=right><input type=number name = "totalbtax"</td>	   
+	</tr>
+	<tr>
+	   <td colspan=4 align=right>Sales Tax (8.25%) $</td>
+	   <td align=right><input type=number name = "salestax"</td>   
+	</tr>
+	<tr>
+	   <td colspan=4 align=right>Total $</td>
+	   <td align=right><input type=number name = "totalatax"</td>	   
+	</tr>
+	<tr>
+	   <td colspan=4 align=right>Shipping and Handling $</td>
+	   <td align=right><input type=number name = "shipnh"</td>  
+	</tr><tr>
+	   <td colspan=4 align=right>Grand Total $</td>
+	   <td align=right><input type=number name = "grandtotal"</td>	   
+	</tr>
+</table>
+</fieldset>
+<input type="submit" class="button" name="SubmitButton" value="Submit">
+<input type="reset" class="button" name="ResetButton" value="Reset">
+</form>
+</section>
+
+<hr>
+<nav>	
+	<ul>
+		<li><a href="index.html">Home</a></li>	
+		<li><a href="productinformation.html">Product Information</a></li>		
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<footer><p>© 2016 Shweta Sahu</p></footer>
+</body>
+</html>

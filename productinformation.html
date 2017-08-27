@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Walk-In Beauty Salon</title>
+	<meta charset="utf-8">	
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<script type="text/javascript">
+        function Product(image,description) {
+            this.image = image;
+            this.description = description;
+            this.display = display;
+        }
+		function display() {
+            document.write("<table><tr>"
+							+ "<td><img src='images//" + this.image + "' /></td>"
+							+ "<td>" + this.description + "</td></tr></table>");
+        }
+		function function1() {
+            var product1 = new Product("arganshampoo.jpg", "<h3>PURA D'OR Anti-Hair Loss Premium Organic Argan Oil Shampoo </h3><br><h4>16 Fluid Ounce </h4><br><br> Our organic anti-hair loss shampoo is the only shampoo in the market that has a natural preservative system derived from 100% plant based extracts. All ingredients are clinically proven to help with thinning hair and scalp problems. Safe for daily use, all hair types, color-safe and for both men and women. Allow at least 3 months of continued daily use for noticeable results.");
+            product1.display();
+        }
+		function function2() {
+            var product2 = new Product("goatmilshampoo.jpg", "<h3>Aromanice Goat Milk Shampoo,Lavender</h3><br><h4>300ML(10.1 Oz)</h4><br><br> Upgraded formula contains pure goat milk ingredient imported from Europe,gently smoothes and nourishes skin and hair.The goat milk shampoo carry the concept of perfect encounter when melody meets piano keys,when laughter meets a playground and when skin meets goat milk..");
+            product2.display();
+			<!---https://www.amazon.com/dp/B01I9AC4Z6?psc=1>
+        }
+		function function3() {
+            var product3 = new Product("nucellconditioner.jpg", "<h3>NuCell Hair Regenerative Conditioner</h3><br><h4>335ML(11 Oz)</h4><br><br>Kathy Ireland's Nugene Regenerative Conditioner is formulated to add smoothness, strength, shine and manageability to the hair. Human Stem Cell Derived Regenerative Conditioner is an exclusive blend of Growth Factors, Vitamins & Polypeptide Complexes that smooths hair replenishes essential oils. With continued use, this gentle conditioner will add strength, shine and manageability to hair.");
+            product3.display();
+			<!-- https://www.amazon.com/dp/B00VEL3HMC?psc=1 >
+        }
+		function selectProduct() {
+            var fName = prompt("Please enter First Name:");
+            var lName = prompt("Please enter Last Name:");
+            alert("Welcome " + fName + " " + lName + " to our product information page!!!");
+            
+			fName = parseInt(prompt("Please enter Your Selection:\n\t 1 : PURA D'OR Premium Organic Argan Oil Shampoo \n\t 2 : Aromanice Goat Milk Shampoo\n\t 3 : NuCell Hair Regenerative Conditioner\n"));
+            switch (fName) {
+                case 1:
+                    function1();
+                    break;
+                case 2:
+                    function2();
+                    break;
+                case 3:
+                    function3();
+                    break;
+                default:
+                    document.write("<p>No Product is Found for that Selection!</p>");
+                    break;
+            }
+        }
+	</script>	
+</head>
+	
+<body>
+<header>
+	<img src="images/logo.png"</img>
+	<h1>Walk-In Beauty Salon</h1>
+</header>
+<hr>
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>		
+		<li><a href="productinformation.html">Product Information</a></li>		
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>		
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<br>
+<section class="section1 box1">
+<h2>Product Information Page</h2>
+<article>
+<script type="text/javascript">
+	selectProduct()
+</script>
+</article>
+</section>
+<hr>
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>		
+		<li><a href="productinformation.html">Product Information</a></li>	
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<footer><p>© 2016 Shweta Sahu</p></footer>
+</body>
+</html>

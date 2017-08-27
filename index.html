@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Walk-In Beauty Salon</title>
+	<meta charset="utf-8">	
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<script type = "text/javascript">
+	//Greetings according to the time of the day
+            function currentTime() {
+                var currDate = new Date();
+                var currhours = currDate.getHours();
+                var currmins = currDate.getMinutes();
+                var currsecs = currDate.getSeconds();
+				setTimeout("currentTime()", 1000);
+				
+				document.getElementById("disptime").innerHTML = currhours + ": " + currmins + ": " + currsecs;
+				
+				var currhours = currDate.getHours();
+                if (currhours >= 0 && currhours < 6) {
+                    document.getElementById("message").innerHTML = "What are you doing that early?";
+                    document.getElementById("message").style.backgroundColor = "orange";
+					document.getElementById("message").style.color = "white";
+                }
+                else if (currhours >= 6 && currhours < 12) {
+                    document.getElementById("message").innerHTML = "Good Morning";
+                    document.getElementById("message").style.backgroundColor = "orange";
+                    document.getElementById("message").style.color = "black";
+                }
+                else if (currhours >= 12 && currhours < 18) {
+                    document.getElementById("message").innerHTML = "Good Afternoon";
+                    document.getElementById("message").style.backgroundColor = "yellow";
+                    document.getElementById("message").style.color = "black";
+                }
+                else if (currhours >= 18 && currhours <= 23) {
+                    document.getElementById("message").innerHTML = "Good Evening";
+                    document.getElementById("message").style.backgroundColor = "gray";
+                    document.getElementById("message").style.color = "cyan";
+                }
+            };
+				
+			var quotesArr = [
+								"Change your thoughts and you change your world - Norman Vincent Peale",
+								"Nothing is impossible, the word itself says 'I'm possible'! - Audrey Hepburn",
+								"Perfection is not attainable, but if we chase perfection we can catch excellence.-Vince Lombardi",
+								"We know what we are, but know not what we may be.-William Shakespeare",
+								"Try to be a rainbow in someone's cloud.-Maya Angelou"
+							 ];
+			function dispQuote()
+			{
+			    var idx = Math.floor(Math.random() * 8);
+                document.getElementById("dispQuote").innerHTML = quotesArr[idx%quotesArr.length];
+            };
+
+			
+			function displayCalendar() 
+			{
+                var cal = "<table style='margin:10px;'>";
+
+                var currDate = new Date();
+                day = currDate.getDay();
+                month = currDate.getMonth();
+                ddate = currDate.getDate();
+                year = currDate.getFullYear();
+
+				
+                var mArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                cal = cal + "<tr><td colspan=17 style='text-align:center'>" + mArray[month] + " " + year + "</td></tr>";
+
+                mDayArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+				
+                var startDate = ddate;
+                while (startDate > 7) startDate -= 7;
+                startDate = day - startDate + 1;
+                if (startDate < 0) startDate += 7;
+
+                cal = cal + "<tr>";
+                cal = cal + "<td align=center>Sun</td>";
+                cal = cal + "<td align=center>Mon</td>";
+                cal = cal + "<td align=center>Tue</td>";
+                cal = cal + "<td align=center>Wed</td>";
+                cal = cal + "<td align=center>Thu</td>";
+                cal = cal + "<td align=center>Fri</td>";
+                cal = cal + "<td align=center>Sat</td>";
+                cal = cal + "</tr>";
+
+                cal = cal + "<tr>";
+                for (i = 0; i < startDate; i++) {
+                    cal = cal + "<td> </td>";
+                }
+                ct = 1;
+                while (ct <= mDayArr[month]) {
+                    for (b = startDate; b < 7; b++) {
+                        cal = cal + "<td>";
+                        if (ct == ddate) {
+                            cal = cal + "<span style='color:deeppink;font-weight:bold'>";
+                        }
+                        if (ct <= mDayArr[month]) {
+                            cal = cal + ct;
+                        } else {
+                            cal = cal + " ";
+                        }
+                        if (ct == ddate) {
+                            cal = cal + "</span>";
+                        }
+                        cal = cal + "</td>";
+                        ct++;
+                    }
+                    cal = cal + "</tr>";
+                    cal = cal + "<tr>";
+                    startDate = 0;
+                }
+                cal = cal + "</table>";
+                document.getElementById("calendar").innerHTML = cal;
+            };
+	
+				
+				
+	
+	
+	
+	</script>
+</head>
+	
+<body onload="currentTime(); dispQuote(); displayCalendar();">
+<header>
+	<img src="images/logo.png"</img>
+	<h1>Walk-In Beauty Salon</h1>
+</header>
+<hr>
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>	
+		<li><a href="productinformation.html">Product Information</a></li>		
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<table class="section1 box1">
+<tr>
+<td width ="40%" align="center" id="disptime"></td>
+<td width ="80%" rowspan=3 id="calendar"></td>
+</tr>
+<tr>
+<td width ="60%" align="center" id="message"></td>
+</tr>
+<tr>
+<td width ="90%" style="font-family:Comic Sans MS;font-style:italic;" align="center" id="dispQuote"></td>
+</tr>
+</table>
+<br>
+<section class="section1 box1">
+<h2>Welcome to <b>Walk-In Beauty Salon</b></h2>
+<article>
+<p>
+We are here located in a prime location in Bay Area to provide highest quality of service to our clients. We offer services in waxing, eyelash extensions, facial treatments, make-up applications and customized spray tanning services. We are located in lovely neighbourhood of Santa Clara Area and easily accessible from Cupertino, North San Jose, Santa Teresa, Milpitas, Mountain View and Campbell (less than 20 minutes drive). 
+<br>
+<figure class="salon"></figure>
+<br>
+Visit us and experience the high quality from our motivated and committed staff. You will be hypnotized by the comfortable elegance of my salon. Our goal is make you feel comfortable and relaxed in our salon and it will make you visit us again and again. Our sessions vary from 10 mins to couple of hours depending on the service requested. We assure you will have a great feeling here up-to your satisfaction.
+</p>
+</article>
+</section>
+<hr>
+<nav>
+	<ul>
+		<li><a href="index.html">Home</a></li>		
+		<li><a href="productinformation.html">Product Information</a></li>
+		<li><a href="productCatalog.html">Catalog of Products</a></li>		
+		<li><a href="aboutus.html">About Us</a></li>
+		<li><a href="whatsnew.html">What's New</a></li>
+		<li><a href="customerservice.html">Customer Support</a></li>
+		<li><a href="faqs.html">FAQs</a></li>
+		<li><a href="employment.html">Employment</a></li>
+		<li><a href="order.html">Order</a></li>
+	</ul>
+</nav>
+<hr>
+<footer><p>© 2016 Shweta Sahu</p></footer>
+</body>
+</html>
